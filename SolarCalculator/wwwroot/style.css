@@ -1,0 +1,97 @@
+
+
+body{
+	background-color:rgb(82, 82, 99);
+  }
+
+#SolarCalulator{
+	color: green;
+	font-weight: 900;
+	font-style: oblique;
+
+}
+
+.color{
+	color: white;
+	font-style: oblique;
+}
+
+
+
+.center{
+	
+	display: flex;
+   justify-content: center;
+   align-items: center;
+}
+
+.sectionindex{
+	max-height: 50%;
+	left:10%;
+	right:10%;
+}
+
+.card-img-top{
+	height: 200px;
+}
+
+.centerRechnung{
+	
+   max-width: 200px;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+}
+
+footer {
+	text-align: center;
+	padding: 3px;
+	color: rgb(24, 21, 21);
+	position: fixed;      
+    bottom: 0px; 
+	height: 10%;
+     width: 100%;
+  }
+
+.hochladen{
+	left: 25%;
+	width: 50%;
+}
+.card_color{
+	background-color: rgb(204, 177, 177);
+}
+
+label{
+	color: white;
+	font-size: bold;
+}
+
+.hover:hover {
+	background-color: rgb(255, 255, 255);
+  }
+
+.Karte{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+#b.berechnen{
+	display: flex;
+   justify-content: center;
+   align-items: center;
+}
+
+/* designen Karte*/
+#map{
+    height: 75%;
+	width: 70%;
+	margin: 5%;
+	padding: 0%;
+}
+
+
+/* hier sind die Media Queries*/
+@media only screen and (max-width: 600px) {
+	
+  }

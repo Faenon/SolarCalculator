@@ -1,0 +1,209 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<title>SolarCalculator</title>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<!-- Leaflet style. REQUIRED! -->
+	<link rel="stylesheet" href="https://unpkg.com/leaflet@latest/dist/leaflet.css" />
+	<style>
+		
+		html { height: 65% ; width: 65;}
+		body { height: 100%; margin: 0; padding: 0; background-color:rgb(82, 82, 99); color: white;}
+		.map { height: 100%; }
+		.center{ left:5%;
+			border-radius: 2%;
+		}
+	
+		
+
+	</style>
+	<!--Fork Me on Github ribbon, we're using the awesome version from simonwhitaker available at https://github.com/simonwhitaker/github-fork-ribbon-css  -->
+	<link rel="stylesheet" href="css/gh-fork-ribbon.css" />
+	<!--[if IE]>
+		<link rel="stylesheet" href="css/gh-fork-ribbon.ie.css" />
+	<![endif]-->
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
+  <link rel="stylesheet" href="../style.css">
+ 
+</head>
+<body style="background-color: rgb(82, 82, 99);">
+	
+
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+
+
+	<nav class="navbar navbar-expand-lg bg-dark">
+		<div class="container-fluid">
+		  <a class="navbar-brand" href="#" id ="SolarCalulator" style="color: green; font-size: bolder;">SolarCalculator</a>
+		  <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation" style="background-color: rgb(117, 122, 126) " >
+			<span class="navbar-toggler-icon"></span>
+		  </button>
+		  <div class="collapse navbar-collapse nav justify-content-end" id="navbarNav">
+			<ul class="navbar-nav">
+			  <li class="nav-item">
+				<a class="nav-link  color hover"  href="../index.html"  >Start</a>
+			  </li>
+	
+		  <li class="nav-item">
+			<a class="nav-link color hover " href="#" >Über uns</a>
+		  </li>
+	
+		  <li class="nav-item">
+			<a class="nav-link color hover" href="#" >Kontakt</a>
+		  </li>
+	
+		  <li class="nav-item">
+			<a class="nav-link color hover" href="../Datenschutz.html" >Datenschutz</a>
+		  </li>
+	
+		  <li class="nav-item">
+			<a class="nav-link color hover" href="https://de.wikipedia.org/wiki/Impressum" >Impressum</a>
+		  </li>
+			</ul>
+		  </div>
+		</div>
+	  </nav>
+
+	  <div style="text-align: center ;" >
+		<h2 class="center mt-3 ">Wählen Sie Ihren Standort</h2>
+	</div>
+	
+	<div class="container" style="background-color: rgb(82, 82, 99);">
+	
+		<div class="input-group mb-3 mt-3">
+			<input type="text" id ="Username" class="form-control" placeholder="Postleitzahl" aria-label="Username">
+			
+			<input type="text" id="country" class="form-control" placeholder="Ort" aria-label="Server">
+	
+	
+		</div>
+	
+		<div class="input-group mb-3 mt-3">
+	
+			<input type="text" id ="street" class="form-control" placeholder="Strasse" aria-label="Username" >
+			
+			<input type="text" id="number" class="form-control" placeholder="Hausnummer" aria-label="Server">
+	
+			
+		</div>
+				<div class="row">
+					<div class="col">
+					<a class="btn btn-success mt-3" href="#" role="button" id ="button_Daten_uebernehmen">Daten übernehmen</a>
+				    </div>
+					<div class="col">
+					<button onclick="getLocation()" class="btn btn-secondary mt-3 " >Position finden</button>
+					</div>
+					<div class="col">
+						<a class="btn btn-primary mt-3" href="../Berechnung.html" role="button" id ="button_Daten_uebernehmen2" style="left:10px">zur Berechnung</a>
+					</div>	
+				</div>
+		</div>	
+		<p id="demo"></p>
+
+
+		<div id="map" class="map mt-3 center" style="width: 80%; height: 80%;"></div>
+		
+	<script>
+
+	</script>
+	
+	<script src="https://unpkg.com/leaflet@latest/dist/leaflet.js"></script>
+	<script src="leaflet-providers.js"></script>
+
+
+
+	<!--Geodaten übernehmen-->
+	
+
+<div id = "Karteausblenden">
+	<script>
+		 let PosLat = 52;
+        let Poslong = 10;
+        let zoom = 5;
+
+       var x = document.getElementById("demo");
+
+       function getLocation() {
+       if (navigator.geolocation) {
+              navigator.geolocation.getCurrentPosition(showPosition);
+			 
+       } else { 
+              x.innerHTML = "Geolocation is not supported by this browser.";
+       }
+       }
+
+       function showPosition(position) {
+       PosLat = position.coords.latitude;
+	   Poslong = position.coords.longitude;
+	   zoom = 25;
+
+	  //////////////////// von hier Karte laden////////////////
+
+	  var map = L.map('map', {
+			center: [PosLat, Poslong],
+			zoom: zoom,
+			zoomControl: false
+		});
+
+		 ///////////////Maker//////////////////////////7
+		 var marker = L.marker([PosLat,Poslong ]).addTo(map)
+		 var popup = marker.bindPopup('<b>Dein Standort</b><br />Drücken Sie auf Daten übernehmen.');
+		 popup.openPopup();
+
+
+
+		var defaultLayer = L.tileLayer.provider('OpenStreetMap.Mapnik').addTo(map);
+
+		
+
+		var overlayLayers = {
+			'OpenSeaMap': L.tileLayer.provider('OpenSeaMap'),
+			'OpenWeatherMap Clouds': L.tileLayer.provider('OpenWeatherMap.Clouds'),
+			'OpenWeatherMap CloudsClassic': L.tileLayer.provider('OpenWeatherMap.CloudsClassic'),
+			'OpenWeatherMap Precipitation': L.tileLayer.provider('OpenWeatherMap.Precipitation'),
+			'OpenWeatherMap PrecipitationClassic': L.tileLayer.provider('OpenWeatherMap.PrecipitationClassic'),
+			'OpenWeatherMap Rain': L.tileLayer.provider('OpenWeatherMap.Rain'),
+			'OpenWeatherMap RainClassic': L.tileLayer.provider('OpenWeatherMap.RainClassic'),
+		
+			'OpenWeatherMap Pressure': L.tileLayer.provider('OpenWeatherMap.Pressure'),
+			'OpenWeatherMap PressureContour': L.tileLayer.provider('OpenWeatherMap.PressureContour'),
+			'OpenWeatherMap Wind': L.tileLayer.provider('OpenWeatherMap.Wind'),
+			'OpenWeatherMap Temperature': L.tileLayer.provider('OpenWeatherMap.Temperature'),
+			'OpenWeatherMap Snow': L.tileLayer.provider('OpenWeatherMap.Snow'),
+			'Geoportail France Parcels': L.tileLayer.provider('GeoportailFrance.parcels'),
+			'Waymarked Trails Hiking': L.tileLayer.provider('WaymarkedTrails.hiking'),
+			'Waymarked Trails Cycling': L.tileLayer.provider('WaymarkedTrails.cycling'),
+			'Waymarked Trails MTB': L.tileLayer.provider('WaymarkedTrails.mtb'),
+			'Waymarked Trails Ski Slopes': L.tileLayer.provider('WaymarkedTrails.slopes'),
+			'Waymarked Trails Riding': L.tileLayer.provider('WaymarkedTrails.riding'),
+			'Waymarked Trails Skating': L.tileLayer.provider('WaymarkedTrails.skating')
+		};
+
+		L.control.layers(baseLayers, overlayLayers, {collapsed: false}).addTo(map);
+
+		// resize layers control to fit into view.
+		function resizeLayerControl () {
+			var layerControlHeight = document.body.clientHeight - (10 + 50);
+			var layerControl = document.getElementsByClassName('leaflet-control-layers-expanded')[0];
+
+			layerControl.style.overflowY = 'auto';
+			layerControl.style.maxHeight = layerControlHeight + 'px';
+		}
+		map.on('resize', resizeLayerControl);
+		resizeLayerControl();
+	
+		
+	}
+</script>
+
+
+<!--////////////////////bis hier Karte laden//////////-->
+
+</div>
+
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+<script src="../main.js"></script>
+</body>
+</html>
