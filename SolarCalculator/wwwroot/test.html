@@ -6,17 +6,6 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script>
         $(document).ready(function(){
-            $("#btnErgebnis").on("click", function () {
-                let a = $("#numA").val();
-                let b = $("#numB").val();
-                let url = "SolarCalculator/calc?a=" + a + "&b=" + b; 
-
-                $.get(url, function (data, status) {
-                    $("#containerEingabe").hide();
-                    $("#containerAusgabe").show();
-                    $("#Ausgabe").text(a + " + " + b + " = " + data); 
-                });
-            });
 
             $("#btnLogin").on("click", function () {
                 let email = $("#tbEmail").val();
@@ -26,7 +15,7 @@
                 {
                     email: email,
                     passwort: passwort
-                    },
+                },
                     function (data, status) {
                         $("#containerEingabe").hide();
                         $("#containerAusgabe").show();
@@ -57,21 +46,6 @@
 <body>
     <h1>Startseite - SolarCalculator</h1>
     <div id="containerEingabe">
-        <div>
-            <label>Erste Zahl</label><br />
-            <input id="numA" type="number" />
-            <br />
-            <br />
-        </div>
-        <div>
-            <label>Zweite Zahl</label><br />
-            <input id="numB" type="number" />
-            <br />
-            <br />
-        </div>
-        <div id="containerErgebnis">
-            <button id="btnErgebnis">Ergebnis</button>
-        </div>
         <div>
             <label>E-Mail</label><br />
             <input id="tbEmail" type="text" />

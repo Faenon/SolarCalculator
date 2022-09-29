@@ -192,13 +192,13 @@ $(document).ready(function() {
 	
 // Hier Login Logik
 
-	$("#Einloggen").mouseup(function() {
-                let mail = $("#Email").val();
-                let pwd = $("#Password").val();
-                
-                
-                alert("mail und Passwort korrekt");
-	});
+	//$("#Einloggen").mouseup(function() {
+    //            let mail = $("#Email").val();
+    //            let pwd = $("#Password").val();
+    //            
+    //            
+    //            alert("mail und Passwort korrekt");
+	//});
 //////////////////////////////////////////////////////////
  // Hier die Lgig der Datenübernahme der Karte
  $("#button_Daten_uebernehmen").mouseup(function() {
@@ -206,10 +206,57 @@ $(document).ready(function() {
 
  });
 
- $(".versenden_daten_Anbieter").mouseup(function() {
-        alert("Ihre Daten wurden erfolgreich zum Anbieter versendet und er wird sich zeitnah mit Ihnen in Verbindung setzen");
+ //$(".versenden_daten_Anbieter").mouseup(function() {
+ //       alert("Ihre Daten wurden erfolgreich zum Anbieter versendet und er wird sich zeitnah mit Ihnen in Verbindung setzen");
+ //
+ //});
 
- });
+
+    //////////////////////////////////////////////////////////
+    // Anmeldeseite
+    $("#Einloggen").on("click", function () {
+        let email = $("#Email").val();
+        let passwort = $("#Password").val();
+
+        $.post("Nutzer/login",
+            {
+                email: email,
+                passwort: passwort
+            },
+            function (data, status) {
+                if (data == true) {
+                    location.href = "Kartenhtml/Karteleaflet.html";
+                } else {
+                    alert("Der Login war nicht erfolgreich!");
+                }
+            }
+        )
+    });
+
+
+    //////////////////////////////////////////////////////////
+    // Daten für Anbieter speichern
+    $(".versenden_daten_Anbieter").on("click", function () {
+
+        $.post("Nutzer/login",
+            $.post("Vertrag/erstelleVertrag",
+                {
+                    AnbieterID: 3,
+                    NutzerID: 9,
+                    stromspeicher: false,
+                    verpachtung: false,
+                    gesamtkosten: 10000
+                },
+                function (data, status) {
+                    $("#containerEingabe").hide();
+                    $("#containerAusgabe").show();
+                    alert("Ihre Daten wurden erfolgreich zum Anbieter versendet und er wird sich zeitnah mit Ihnen in Verbindung setzen");
+                }
+            )
+        )
+    });
 
 
 });
+
+

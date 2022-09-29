@@ -20,12 +20,6 @@ namespace SolarCalculator.Controllers
             return "Hallo!";
         }
 
-        public int calc(int a, int b)
-        {
-            int ergebnis = a + b;
-            return ergebnis;
-        }
-
         public Nutzer getNutzer()
         {
             var query = from n in _context.Set<Nutzer>()

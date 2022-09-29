@@ -18,12 +18,13 @@ namespace SolarCalculator.Models
                 }
 
                 //Nutzer erstellen
+                //Passwort 123
                 Nutzer nutzer1 = new Nutzer
                 {
                     vorname = "Peter",
                     name = "Parker",
                     email = "peter.parker@gmx.de",
-                    passwort = "123",
+                    passwort = "a665a45920422f9d417e4867efdc4fb8a04a1f3fff1fa07e998e86f7f7a27ae3",
                     strasse = "Spinnenweg",
                     hausnummer = "12",
                     ort = "New York",
@@ -43,12 +44,13 @@ namespace SolarCalculator.Models
 
                 nutzer1.haeuser.Add(haus1);
 
+                //Passwort 123
                 Nutzer nutzer2 = new Nutzer
                 {
                     vorname = "Natasha",
                     name = "Romanoff",
                     email = "blackwidow@gmail.com",
-                    passwort = "456",
+                    passwort = "a665a45920422f9d417e4867efdc4fb8a04a1f3fff1fa07e998e86f7f7a27ae3",
                     strasse = "Am Waldrand",
                     hausnummer = "6",
                     ort = "Pampa",
@@ -80,12 +82,13 @@ namespace SolarCalculator.Models
                 nutzer2.haeuser.Add(haus21);
                 nutzer2.haeuser.Add(haus22);
 
+                //Passwort 123
                 Nutzer nutzer3 = new Nutzer
                 {
                     vorname = "Tony",
                     name = "Stark",
                     email = "stark@starkindustries.com",
-                    passwort = "000",
+                    passwort = "a665a45920422f9d417e4867efdc4fb8a04a1f3fff1fa07e998e86f7f7a27ae3",
                     strasse = "Berlinerstr",
                     hausnummer = "32",
                     ort = "Berlin",
