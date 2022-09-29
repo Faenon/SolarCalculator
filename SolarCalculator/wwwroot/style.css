@@ -16,7 +16,10 @@ body{
 	font-style: oblique;
 }
 
-
+.textcenter{
+	text-align: center;
+	color: rgb(177, 209, 177);
+}
 
 .center{
 	

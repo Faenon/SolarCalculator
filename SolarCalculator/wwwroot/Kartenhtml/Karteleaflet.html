@@ -67,7 +67,7 @@
 	  </nav>
 
 	  <div style="text-align: center ;" >
-		<h2 class="center mt-3 ">Wählen Sie Ihren Standort</h2>
+		<h2 class="textcenter mt-3 ">Wählen Sie Ihren Standort</h2>
 	</div>
 	
 	<div class="container" style="background-color: rgb(82, 82, 99);">
@@ -93,7 +93,8 @@
 					<a class="btn btn-success mt-3" href="#" role="button" id ="button_Daten_uebernehmen">Daten übernehmen</a>
 				    </div>
 					<div class="col">
-					<button onclick="getLocation()" class="btn btn-secondary mt-3 " >Position finden</button>
+					<button onclick="getLocation()" class="btn btn-secondary mt-3 " >
+						Position finden</button>
 					</div>
 					<div class="col">
 						<a class="btn btn-primary mt-3" href="../Berechnung.html" role="button" id ="button_Daten_uebernehmen2" style="left:10px">zur Berechnung</a>
@@ -149,10 +150,30 @@
 
 		 ///////////////Maker//////////////////////////7
 		 var marker = L.marker([PosLat,Poslong ]).addTo(map)
-		 var popup = marker.bindPopup('<b>Dein Standort</b><br />Drücken Sie auf Daten übernehmen.');
+		 var popup = marker.bindPopup('<b>Dein Standort</b><br />Drücken Sie auf Daten übernehmen.' );
 		 popup.openPopup();
 
+		 //////// Aniniere Button Daten übernehmen  ///////////////////
+		
+		 
 
+
+		 let myTimeout = setTimeout(myGreeting, 1000);
+
+				function myGreeting() {
+					$("#button_Daten_uebernehmen").css("background-color", "red");
+
+					let myTimeout2 = setTimeout(myGreeting2, 1000);
+				}
+
+				function myGreeting2() {
+					$("#button_Daten_uebernehmen").css("background-color", "green");
+					let myTimeout3 = setTimeout(myGreeting, 1000);
+				}
+
+			
+
+		///////////////////////////////////////////
 
 		var defaultLayer = L.tileLayer.provider('OpenStreetMap.Mapnik').addTo(map);
 
@@ -195,6 +216,12 @@
 		resizeLayerControl();
 	
 		
+		
+					
+					
+				
+
+
 	}
 </script>
 
